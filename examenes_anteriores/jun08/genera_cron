@@ -1,0 +1,74 @@
+#!/usr/bin/python -tt
+# -*- coding: utf-8 -*-
+
+#DASR - Examen final
+#Autor: David Rozas (drozas)
+
+import os.path
+import sys
+import commands
+import os
+import shutil
+import time
+import datetime
+
+
+def check_params():
+
+	if (len(sys.argv)==1):
+		return 0
+	else:
+		return -1
+
+def generar_tabla_cron(file):
+	f = open(file, 'r')
+
+	users_list = {}
+	for line in f:
+		users_list[line.split(';')[0]] = (line.split(';')[1])[:-1]
+
+	f.close()
+
+
+	for k in users_list.keys():
+		if (users_list[k]=="lunes"):
+			users_list[k] = 1
+		elif (users_list[k]=="martes"):
+			users_list[k] = 2
+		elif (users_list[k]=="miercoles"):
+			users_list[k] = 3
+		elif (users_list[k]=="jueves"):
+			users_list[k] = 4
+		elif (users_list[k]=="viernes"):
+			users_list[k] = 5
+
+	f = open("tabla_cron", "w")
+	f.write("# m h dom mon dow command\n")
+	command = "/home/al-03-04/drozas/dasr/pc01/guarda_informe"
+
+	for user in users_list.keys():
+		f.write("0 21 * * " + str(users_list[user]) + " " + command + " " + user + "\n")
+
+	f.write("\n")
+	f.close()
+	
+
+
+def cargar_tabla():
+	command = "crontab tabla_cron"
+	print command
+	#return commands.getstatusoutput(command)
+
+if __name__ == '__main__':
+	
+	state = check_params()
+	
+	if (state == 0):
+		generar_tabla_cron("empleados.txt")
+		cargar_tabla()
+	else:
+		sys.stderr.write("Uso: ./genera_cron\n")
+
+	
+			
+	sys.exit(state)

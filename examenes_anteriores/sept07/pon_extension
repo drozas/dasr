@@ -1,0 +1,94 @@
+#!/usr/bin/python -tt
+# -*- coding: utf-8 -*-
+
+#DASR - Examen final
+#Autor: David Rozas (drozas)
+
+""" Recodifica todos los ficheros (o ficheros contenidos en un directorio) a la codificación
+estándar del sistema (si es un fichero de texto plano).
+"""
+
+import os.path
+import sys
+import commands
+import os
+import shutil
+
+def check_params():
+
+	if (len(sys.argv)>2 and len(sys.argv)<=4):
+		if (os.path.isdir(sys.argv[2])):
+			if (len(sys.argv)==4):
+				if (sys.argv[3]=="-n"):
+					return 0
+				else:
+					return -1
+			else:
+				return 0
+	
+	#sys.stderr.write("Uso: ./pon_extension.py grupo directorio [-n]")
+	return -1
+
+def is_jpeg(file):
+	""" 
+	Devuelve true si el fichero es un fichero de texto plano,
+	false en cualquier otro caso
+	"""
+	
+	command = "file --mime " + file
+	r = commands.getstatusoutput(command)
+
+	if (r[0]==0):
+		trozos = r[1].split(" ")
+		return trozos[1]=="image/jpeg"
+	else:
+		print "Error al ejecutar: " + command
+		return False
+
+def get_group(file):
+	"""
+	Devuelve true si el fichero es un fichero de texto plano,
+	false en cualquier otro caso
+	"""
+
+	command = "ls -l " + file
+	r = commands.getstatusoutput(command)
+	if r[0]==0:
+		trozos = r[1].split(" ")
+		return trozos[3]
+	else:
+		return None
+
+def analiza(dir, my_group, nothing):
+	"""
+	Realiza una copia del fichero en el formato estándar del sistema, recodificando
+	si fuera """
+
+	for dirpath, dirnames, filenames in os.walk(dir):
+		for name in filenames:
+			f = os.path.join(dirpath,name)
+			group = get_group(f)
+
+			if (group!=None and group==my_group):
+				if(is_jpeg(f)):
+					if (len(name.split("."))==1):
+						if (nothing):
+							print f + " es una imagen jpg, pero no será renombrado"
+						else:
+							new_dir = os.path.join(dirpath, name + ".jpg")
+							print "Renombrando " + f + " a " + new_dir
+							shutil.move(f,new_dir)
+					
+
+if __name__ == '__main__':
+	
+	state = check_params()
+	
+	if (state == 0):
+		analiza(sys.argv[2], sys.argv[1], len(sys.argv)==4)
+	else:
+		sys.stderr.write("Uso: ./pon_extension.py grupo directorio [-n]")
+
+	
+			
+	sys.exit(state)

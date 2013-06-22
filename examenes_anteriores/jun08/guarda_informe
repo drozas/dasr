@@ -1,0 +1,62 @@
+#!/usr/bin/python -tt
+# -*- coding: utf-8 -*-
+
+#DASR - Examen final
+#Autor: David Rozas (drozas)
+
+import os.path
+import sys
+import commands
+import os
+import shutil
+import time
+import datetime
+
+
+def check_params():
+
+	if (len(sys.argv)==2):
+		return 0
+	else:
+		return -1
+
+def check_username(username, file):
+	f = open(file, 'r')
+
+	users_list = []
+	for line in f:
+		users_list.append(line.split(';')[0])
+
+	f.close()
+
+	return (username in users_list) 
+
+def create_report_backup(username):
+	informe = os.path.join(os.path.join(os.environ['HOME'],username),"informe.txt")
+	
+	command = "date -I"
+	fecha = commands.getstatusoutput(command)[1]
+	backup = os.path.join("/root/informes", "informe." + username + "." + fecha + ".tgz")
+	
+	command = "tar -czvf " + backup + " " + informe
+	return commands.getstatusoutput(command)
+
+if __name__ == '__main__':
+	
+	state = check_params()
+	
+	if (state == 0):
+		username = sys.argv[1]
+		if (check_username(username, "/root/empleados.txt")):
+			print username + " en fichero"
+			r = create_report_backup(username)
+			if (r[0]!=0):
+				sys.stderr.write("Error al generar el tgz\n")
+		else:
+			sys.stderr.write(username + " no está en el fichero\n")
+	else:
+		sys.stderr.write("Uso: ./guarda_informe [-n]\n")
+
+	
+			
+	sys.exit(state)

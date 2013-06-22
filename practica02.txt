@@ -1,0 +1,32 @@
+David Rozas Domingo	drozas
+
+04-03-2009
+
+- Realización de práctica 2.1. Algunos de los conceptos aprendidos: 
+	- Manejo de diccionarios, listas y tuplas
+	- Funciones lambda
+	- Módulo commands para ejecutar comandos Unix
+
+09-03-2009
+
+- Realización de práctica 2.2: Las dos recomendaciones que me han parecido más interesantes son:
+	- "Python tiene nombres": más o menos lo conocía, pero me parece una muy buena y sencilla explicación.
+	- Los apartados de "Construyendo cadenas": los desconocía completamente y me parecen muy útiles.
+
+- Realización de práctica 2.3.
+
+11-03-2009
+
+- Realización de práctica 2.4.
+---> Revisión previa al examen (11-06-2009): olvidé hacer el tratamiento para subdirectorios... solucionado.
+
+- Comienzo de práctica 2.5.
+
+16-03-2009
+
+- Finalización de práctica 2.5
+- Comienzo de práctica 2.6: incluye borrado de directorios.
+
+23-03-2009
+- Finalización de práctica 2.6.
+

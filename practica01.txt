@@ -1,0 +1,77 @@
+David Rozas Domingo	drozas
+
+02-03-2009
+
+Práctica 1.1
+Elijo nano porque es con el que tengo más experiencia.
+Atajos usados: CTRL+O (guardar) ,CTRL+X (salir) ,CTRL+w (buscar expresión), CTRL+X (cortar), CTRL+U (pegar) CTRL+C 
+(ver posición actual), ...
+
+Práctica 1.2
+
+1.2.1
+
+Nos devuelve el login. Una alternativa es:
+id -un
+
+1.2.2
+
+Si queremos el grupo primario:
+id -g
+
+Si queremos los identificadores de todos los grupos:
+id -G
+
+1.2.3
+
+Podemos conocer la arquitectura con:
+uname -m 
+
+1.2.4
+
+Podemos obtener la IP con:
+hostname -i
+
+1.2.5
+
+Podemos prescindir de dichas columnas con la opción -s :
+w -s
+
+1.2.6
+
+Podemos utilizar: 
+1. du
+
+2. du -sh (sin que nos imprima el uso de subdirectorios y en formato 
+"humano")
+
+Ej.: 
+drozas@alpha03:~$ du -sh
+946M	.
+
+
+Práctica 1.3
+
+1.3.1.
+
+xcalc
+
+1.3.2
+
+CTRL Z o kill -17 sigstop (averiguado el pid con ps -e|grep xcalc). 
+Lo que ocurre "gráficamente", es que no permite la entrada de información.
+
+1.3.3
+
+kill -sigcont pid (averiguado de la forma anterior).
+Lo que ocurre es que aparece la información cuya entrada no se permitió:
+Ej.: Si tecleamos 123 mientras estaba parada, ahora aparece.
+
+1.3.4
+
+kill pid (por defecto señal 15, la invitamos a morir, y ha muerto)
+
+1.3.5
+
+- con kill pid (señal 15) el proceso no se ha muerto (comprobado con ps -e|grep xcalc)
+- con kill -9 pid el proceso ha muerto

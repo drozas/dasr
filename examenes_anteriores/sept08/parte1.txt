@@ -1,0 +1,26 @@
+Ejercicio 2:
+ver
+
+Ejercicio 3:
+
+Será necesario:
+
+- Crear el script /etc/init.d/mi-servicio
+- Cuando recibe el parámetro start, ejecutaría: /var/tmp/mi-servicio on
+- Cuando recibe el parámetro stop, ejecutaría: /var/tmp/mi-servicio off
+- Cuando recibe el parámetro reload, ejecutaría:
+        /var/tmp/mi-servicio off
+        /var/tmp/mi-servicio on
+
+- Como queremos que el servicio se active lo antes posible en el arraque, crearíamos un enlace:
+ln -s /etc/inid.d/mi-servicio /etc/rc2.d/S01mi-servicio
+
+- Y para que se detenga de los último (0 por decir el enunciado al apagar el equipo):
+ln -s /etc/inid.d/mi-servicio /etc/rc0.d/K99mi-servicio
+
+Ejercicio 6
+
+Modificamos el nombre de la distribución en /etc/apt/sources.list
+Ejecutamos:
+sudo aptitude update
+sudo dist-upgrade

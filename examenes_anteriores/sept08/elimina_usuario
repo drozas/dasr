@@ -1,0 +1,98 @@
+#!/usr/bin/python -tt
+# -*- coding: utf-8 -*-
+
+#DASR - Examen final
+#Autor: David Rozas (drozas)
+
+import os.path
+import sys
+import commands
+import os
+import shutil
+import pwd
+
+num = 0;
+
+mi_log = open ("log.txt", "w")
+
+def check_params():
+
+	if (len(sys.argv)==2):
+		return 0
+	else:
+		return -1
+
+def existe_usuario(username):
+	f = open("/etc/passwd", "r")
+
+	users = []
+
+	for line in f:
+		users.append((line.split(":"))[0])
+
+	f.close()
+	return username in users
+
+def get_dueno(file):
+	#command = "ls -l " + file
+	#return (commands.getstatusoutput(command)[1]).split(" ")[2]
+	#Esto daba algunos problemas con algunos ficheros. Como alternativa, vamos a usar el uid
+	#print file + " tiene uid=" + str(os.stat(file)[3])
+	return os.stat(file)[4]
+
+def get_uid_from_username(username):
+	#print "mi uid=" + str(pwd.getpwnam(username)[2])
+	return pwd.getpwnam(username)[2]
+
+def es_dueno(fichero, username):
+	try:
+		return get_dueno(fichero)==get_uid_from_username(username)
+	except OSError:
+		print "Imposible acceder a " + fichero
+
+def borrar_fichero(f):
+	global num
+	dest = "/var/tmp/borrado/" + str(num)
+	command =  "mv " + f + " " + dest
+	num = num + 1
+
+	print command
+	mi_log.write(f + ";" + dest + "\n")
+
+def hacer_backup():
+	command = "date -I"
+	fecha = commands.getstatusoutput(command)[1]
+	backup = os.path.join("/var/tmp/borrado." + fecha + ".tgz")
+	
+	command = "tar -czvf " + backup + "/var/tmp/borrado"
+	print command
+	#return commands.getstatusoutput(command)
+
+if __name__ == '__main__':
+	state = check_params()
+	
+	if (state == 0):
+		username = sys.argv[1]
+		if (existe_usuario(username)):
+			print username + " existe"
+			excluded_dirs = ['/dev', '/proc']
+			for root, dirs, files in os.walk('/'):
+				for f in files:
+					for d in dirs:
+						if os.path.join(root,d) in excluded_dirs:
+							print root + d + " bingo!"
+							dirs.remove(d)
+					fichero = os.path.abspath(os.path.join(root,f))
+					if (es_dueno(fichero,username)):
+						borrar_fichero(fichero)
+
+			hacer_backup()
+
+		else:
+			sys.stderr.write("El usuario no existe\n")
+	else:
+		sys.stderr.write("Uso: ./elimina_usuario usuario\n")
+
+	
+	mi_log.close()
+	sys.exit(state)

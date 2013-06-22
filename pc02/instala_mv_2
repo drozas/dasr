@@ -1,0 +1,130 @@
+#!/usr/bin/python -tt
+# -*- coding: utf-8 -*-
+
+#DASR - Práctica 4.2
+#Autor: David Rozas (drozas)
+
+"""
+Script para configuración de la máquina virtual que:
+
+- Cambia el nombre de la misma internamente (modificando el fichero)
+- Monta por sshfs la cuenta del laboratorio en el directorio /home/pantufo
+- Además comprueba que no esté previamente montado (y si es así, no lo monta)
+- Genera enlaces blandos a sources.list y hosts en la cuenta de pantuflo
+- Anula la cuenta de root (su acceso por login) modificando una línea
+
+"""
+
+import os.path
+import sys
+import commands
+import os
+import shutil
+
+
+#El log será una variable global
+log = open ('/var/tmp/log.txt', 'a')
+
+def print_and_log(message):
+	log.write(message + "\n")
+	print message
+
+
+def run_command(command):
+	p = commands.getstatusoutput(command)
+	if (p[0]!=0):
+		print_and_log("Error al ejecutar: " + command)
+		print_and_log("Se aborta la ejecución del resto de comandos")
+		sys.exit(-1)
+
+
+def set_hostname():
+	hostname_file = ("/etc/hostname")
+	if os.path.exists(hostname_file):
+		fd = open(hostname_file, 'w')
+		fd.write ("pc02\n")
+		fd.close()
+		print_and_log("Se cambió el nombre de la VM correctamente")
+	else:	
+		print_and_log("No se pudo acceder al fichero " + hostname_file)
+
+def already_mounted():
+	"""
+	Comprueba si /home/pantuflo ya ha sido montado
+	"""
+	c = "mount | grep drozas@pantuflo.es"
+	p = commands.getstatusoutput(c)
+
+	#Estará montado si se devolvió una línea con grep 
+	if (p[0]==0):
+		return len(p[1])>0
+
+	return False
+
+def delete_and_link(fileToDelete, fileToLink):
+	"""
+	Borra el fichero original, y realiza un enlace blando al fichero indicado
+	con el nombre original.
+	"""
+	if os.path.exists(fileToDelete):
+		os.remove(fileToDelete)
+	
+	os.symlink(fileToLink, fileToDelete)
+
+def remove_root_pwd_access():
+	"""
+	Impide el acceso a la cuenta de root sustituyendo su password en /etc/shadow
+	por un *
+	"""
+	if os.path.exists("/etc/shadow"):
+		f = open ("/etc/shadow", "r")
+		f_new = open ("/etc/shadow.new", "w")
+
+		for line in f:
+			trozos = line.split(":")
+			print line
+			print trozos
+			if (trozos[0]=="root"):
+				#Si es la entrada de root, sustituimos el campo de pass por un *
+				f_new.write(trozos[0] + ":-" + trozos[1])
+				for field in trozos[2:]:
+					f_new.write(":" + field)
+			else:
+				#Si no, escribimos la linea entera
+				f_new.write(line)
+
+		f.close()
+		f_new.close()
+		print_and_log("Desactivado acceso por login a root")
+
+		#Y hacemos un mv del nuevo
+		shutil.move("/etc/shadow.new","/etc/shadow")
+	
+if __name__ == '__main__':
+	
+	print_and_log("Nueva ejecución")
+
+	#Primero cambiamos el nombre de la máquina por su fichero /etc/hostname
+	set_hostname()
+
+	#Comprobamos si ya se montó, y en caso contrario se monta
+	if already_mounted():
+		print_and_log("El sistema de ficheros ya estaba montado. Se omite")
+	else:
+		#Montamos nuestro home en pantuflo en el directorio /home/pantuflo de la VM
+		c = "sshfs -C drozas@pantuflo.es: /home/pantuflo"
+		run_command(c)
+		print_and_log("/home/pantuflo se montó correctamente")
+
+	#Posteriormente borramos los ficheros sources.list y hosts, y creamos enlaces a las copias que tenemos en el home
+	delete_and_link("/etc/hosts", "/home/pantuflo/dasr/pc02/hosts")
+	print_and_log("Se enlazó el fichero hosts")
+	delete_and_link("/etc/apt/sources.list", "/home/pantuflo/dasr/pc02/sources.list")
+	print_and_log("Se enlazó el fichero sources.list")	
+
+	#Evitar acceso a cuenta de root por login
+	remove_root_pwd_access()
+
+	log.close()
+	sys.exit(0)
+

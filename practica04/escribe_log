@@ -1,0 +1,23 @@
+#!/usr/bin/python -tt
+# -*- coding: utf-8 -*-
+
+#DASR - Práctica 4.4
+#Autor: David Rozas (drozas)
+
+"""
+Script para practicar el uso de cron:
+- Añade una cadena probando cront + fecha y hora actual a un fichero
+de log en ~dasr/log.txt
+"""
+
+import os.path
+import time
+import datetime
+
+log = open (os.path.join(os.getenv('HOME'),'dasr/log.txt'), "a")
+
+now = datetime.datetime.now()
+
+log.write("probando cron " + now.ctime() + "\n")
+
+log.close()

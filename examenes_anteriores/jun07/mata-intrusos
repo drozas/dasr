@@ -1,0 +1,90 @@
+#!/usr/bin/python -tt
+# -*- coding: utf-8 -*-
+
+#DASR - Examen final
+#Autor: David Rozas (drozas)
+
+import os.path
+import sys
+import commands
+import os
+import shutil
+
+def check_params():
+
+	if (len(sys.argv)==2 and os.path.exists(sys.argv[1]) and os.path.isfile(sys.argv[1])):
+		return 0
+	else:
+		return -1
+
+
+def get_users():
+	command = "who"
+	r = commands.getstatusoutput(command)
+	if r[0]==0:
+		aux = []
+		lineas = r[1].split("\n")
+		for l in lineas:
+			aux.append(l.split(" ")[0])
+		return aux
+	else:
+		return None
+
+def get_groups(users):
+	users_groups = {}
+	command = "groups "
+	for u in users:
+		r = commands.getstatusoutput(command + u)
+		if r[0]==0:
+			trozos = r[1].split(" ")
+			groups_list = []
+			for t in trozos:
+				groups_list.append(t)
+
+			users_groups[u] = groups_list
+
+
+	return users_groups
+
+def get_authorized_groups(dir):
+	f = open(dir, 'r')
+	groups = []
+
+	for line in f:
+		groups.append(line[:-1])
+
+	f.close()
+	return groups
+
+def kill_procesos(user):
+	command = "pkill -u " + user
+	print "Ejecutando "  + command
+	#r = commands.getstatusoutput(command)
+
+
+if __name__ == '__main__':
+	
+	state = check_params()
+	
+	if (state == 0):
+		users_groups = get_groups(get_users())
+		#print users_groups
+		
+		authorized_groups = get_authorized_groups(sys.argv[1])
+		#print authorized_groups
+
+		for user in users_groups:
+			#print user
+			#print users_groups[user]
+			for g in users_groups[user]:
+				if g in authorized_groups:
+					print user + " está autorizado"
+				else:
+					print user + " no está autorizado"
+					kill_procesos(user)
+	else:
+		sys.stderr.write("Uso: ./mata_intrusos fichero\n")
+
+	
+			
+	sys.exit(state)

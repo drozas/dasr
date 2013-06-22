@@ -1,0 +1,326 @@
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+El script se ha arrancado con éxito en la VM
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+El script se ha arrancado con éxito en la VM
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+El script se ha arrancado con éxito en la VM
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+El script se ha arrancado con éxito en la VM
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+El script se ha arrancado con éxito en la VM
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+El script se ha arrancado con éxito en la VM
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+Error al ejecutar: ssh -i /home/al-03-04/drozas/.ssh/id_root_pc-vacio root@172.16.19.130 '/etc/init.d/instala_mv_2 start'
+Se aborta la ejecución del resto de comandos
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+Error al ejecutar: ssh -i /home/al-03-04/drozas/.ssh/id_root_pc-vacio root@172.16.19.130 '/etc/init.d/instala_mv_2 start'
+Se aborta la ejecución del resto de comandos
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+El script se ha arrancado con éxito en la VM
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+El script se ha arrancado con éxito en la VM
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+El script se ha arrancado con éxito en la VM
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+El script se ha arrancado con éxito en la VM
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+Error al ejecutar: ssh -i /home/al-03-04/drozas/.ssh/id_root_pc-vacio root@172.16.19.130 '/etc/init.d/instala_mv_2 start'
+Se aborta la ejecución del resto de comandos
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Error al ejecutar: ssh -i /home/al-03-04/drozas/.ssh/id_root_pc-vacio root@172.16.19.130 'chmod 600 /root/.ssh/id_rsa'
+Se aborta la ejecución del resto de comandos
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Error al ejecutar: ssh -i /home/al-03-04/drozas/.ssh/id_root_pc-vacio root@172.16.19.130 'chmod 600 /root/.ssh/id_rsa'
+Se aborta la ejecución del resto de comandos
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+El script se ha arrancado con éxito en la VM
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+Error al ejecutar: ssh -i /home/al-03-04/drozas/.ssh/id_root_pc-vacio root@172.16.19.130 '/etc/init.d/instala_mv_2 start'
+Se aborta la ejecución del resto de comandos
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+Error al ejecutar: ssh -i /home/al-03-04/drozas/.ssh/id_root_pc-vacio root@172.16.19.130 '/etc/init.d/instala_mv_2 start'
+Se aborta la ejecución del resto de comandos
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+Error al ejecutar: ssh -i /home/al-03-04/drozas/.ssh/id_root_pc-vacio root@172.16.19.130 '/etc/init.d/instala_mv_2 start'
+Se aborta la ejecución del resto de comandos
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+Error al ejecutar: ssh -i /home/al-03-04/drozas/.ssh/id_root_pc-vacio root@172.16.19.130 '/etc/init.d/instala_mv_2 start'
+Se aborta la ejecución del resto de comandos
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+El script se ha arrancado con éxito en la VM
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+Error al ejecutar: ssh -i /home/al-03-04/drozas/.ssh/id_root_pc-vacio root@172.16.19.130 '/etc/init.d/instala_mv_2 start'
+Se aborta la ejecución del resto de comandos
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+El script se ha arrancado con éxito en la VM
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+El script se ha arrancado con éxito en la VM
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+El script se ha arrancado con éxito en la VM
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+El script se ha arrancado con éxito en la VM
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+El script se ha arrancado con éxito en la VM
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+El script se ha arrancado con éxito en la VM
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.19.129-172.16.19.254
+IP encontrada: 172.16.19.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+El script se ha arrancado con éxito en la VM
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 192.168.208.129-192.168.208.254
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 192.168.208.129-192.168.208.254
+IP encontrada: 192.168.208.129
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+El script se ha arrancado con éxito en la VM
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 192.168.208.129-192.168.208.254
+IP encontrada: 192.168.208.129
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+El script se ha arrancado con éxito en la VM
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.18.129-172.16.18.254
+IP encontrada: 172.16.18.129
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+El script se ha arrancado con éxito en la VM
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.243.129-172.16.243.254
+IP encontrada: 172.16.243.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+El script se ha arrancado con éxito en la VM
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 172.16.243.129-172.16.243.254
+IP encontrada: 172.16.243.130
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+El script se ha arrancado con éxito en la VM
+Nueva ejecución...
+Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...
+Comenzado ping en el rango 192.168.237.129-192.168.237.254
+IP encontrada: 192.168.237.129
+El script se copió con éxito en la VM
+Los permisos del script fueron modificados con éxito en la VM
+La clave privada /home/al-03-04/drozas/.ssh/id_drozas_rsa fue copiada con éxito en la VM
+Los permisos de/home/al-03-04/drozas/.ssh/id_drozas_rsa fueron modificados con éxito en la VM
+El script se ha arrancado con éxito en la VM

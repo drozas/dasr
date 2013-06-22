@@ -1,0 +1,43 @@
+Ejercicio 3:
+
+find 2>/dev/null / -name quijote.txt
+
+sed 's/don/DON/g' quijote.txt > quijote.txt.aux
+
+Ejercicio 4:
+
+Preguntar: Ok?
+
+Será necesario:
+
+- Crear el script /etc/init.d/mi-servicio
+- Cuando recibe el parámetro start, ejecutaría: /var/tmp/mi-servicio on
+- Cuando recibe el parámetro stop, ejecutaría: /var/tmp/mi-servicio off
+- Cuando recibe el parámetro reload, ejecutaría:
+	/var/tmp/mi-servicio off
+	/var/tmp/mi-servicio on
+
+- Como queremos que el servicio se active siempre, usamos el nivel rcS
+- Para que se ejecutara de los primeros, crearíamos un enlace:
+ln -s /etc/inid.d/mi-servicio /etc/rcS.d/S01mi-servicio
+
+- Y para que se detenga de los último (0 por decir el enunciado al 
+apagar el equipo):
+ln -s /etc/inid.d/mi-servicio /etc/rc0.d/K99mi-servicio
+
+
+Ejercicio 5:
+
+Podemos programar una tarea cron:
+
+0 10 * * 2 "aptitude update; aptitude safe-upgrade"
+
+"Todos los martes a las 10AM"
+
+Preguntar: ¿que pasa si queremos ejecutarla como root?:
+
+- A) Programamos la tarea en la tabla cron del root (/etc/crontab)
+
+(http://ubuntuforums.org/showthread.php?t=451246)
+
+- B) O editamos el comando "sudo + ..."

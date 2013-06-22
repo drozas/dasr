@@ -1,0 +1,35 @@
+Hora inicio: 18.10, hora fin: 19.34
+
+1. Simulación.
+
+No tendría sentido
+
+2. Virtualización
+
+Puesto que host y guest han de tener la misma arquitectura, la aplicación no funcionaría.
+
+3. Paravirtualización
+
+Idem que 2.
+
+4. Clonación.
+
+No tiene sentido.
+
+5. Virtualización completa
+
+Si disponemos de una MV que emule las características de un micro powerpc la aplicación funcionaría.
+
+6. User Mode Linux
+
+Nos permite ejecutar un linux sobre otro linux con distinta arquitectura 
+(aunque acceden al mismo HW). Puesto que la aplicación no tiene grandes 
+requerimientos de HW, sería posible.
+
+7. Virtualización nativa
+
+Si la arquitectura PowerPC lo permite, sería la que mejor rendimiento daría.
+
+8. Capa de compatibilidad
+
+El problema es con la arquitectura. No funcionaría.

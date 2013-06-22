@@ -1,0 +1,378 @@
+127.0.0.1 localhost
+127.0.0.1 pc02
+
+# Servidores de los Laboratorios
+212.128.4.2	zipi.pantuflo.es	zipi
+212.128.4.3	zape.pantuflo.es	zape
+212.128.4.4	pantuflo.pantuflo.es	pantuflo
+212.128.4.5	jaimita.pantuflo.es	jaimita
+212.128.4.6	sapientin.pantuflo.es	sapientin
+212.128.4.7	peloto.pantuflo.es	peloto
+212.128.4.8	lechuzo.pantuflo.es	lechuzo
+212.128.4.9	minervo.pantuflo.es	minervo
+212.128.4.10	professor.lsub.org	professor
+212.128.4.12	espatula.pantuflo.es	espatula
+
+
+# Móstoles - Laboratorio 109
+212.128.4.19 alpha01.pantuflo.es alpha01
+212.128.4.20 alpha02.pantuflo.es alpha02
+212.128.4.21 alpha03.pantuflo.es alpha03
+212.128.4.22 alpha04.pantuflo.es alpha04
+212.128.4.23 alpha05.pantuflo.es alpha05
+212.128.4.24 alpha06.pantuflo.es alpha06
+212.128.4.25 alpha07.pantuflo.es alpha07
+212.128.4.26 alpha08.pantuflo.es alpha08
+212.128.4.27 alpha09.pantuflo.es alpha09
+212.128.4.28 alpha10.pantuflo.es alpha10
+212.128.4.29 alpha11.pantuflo.es alpha11
+212.128.4.30 alpha12.pantuflo.es alpha12
+212.128.4.31 alpha13.pantuflo.es alpha13
+212.128.4.32 alpha14.pantuflo.es alpha14
+212.128.4.33 alpha15.pantuflo.es alpha15
+212.128.4.34 alpha16.pantuflo.es alpha16
+212.128.4.35 alpha17.pantuflo.es alpha17
+212.128.4.36 alpha18.pantuflo.es alpha18
+212.128.4.37 alpha19.pantuflo.es alpha19
+212.128.4.38 alpha20.pantuflo.es alpha20
+212.128.4.39 alpha21.pantuflo.es alpha21
+212.128.4.40 alpha22.pantuflo.es alpha22
+212.128.4.41 alpha23.pantuflo.es alpha23
+212.128.4.42 alpha24.pantuflo.es alpha24
+212.128.4.43 alpha25.pantuflo.es alpha25
+212.128.4.44 alpha26.pantuflo.es alpha26
+212.128.4.45 alpha27.pantuflo.es alpha27
+212.128.4.46 alpha28.pantuflo.es alpha28
+212.128.4.47 alpha29.pantuflo.es alpha29
+212.128.4.48 alpha30.pantuflo.es alpha30
+212.128.4.49 alpha31.pantuflo.es alpha31
+212.128.4.50 alpha32.pantuflo.es alpha32
+212.128.4.51 alpha33.pantuflo.es alpha33
+212.128.4.52 alpha34.pantuflo.es alpha34
+212.128.4.53 alpha35.pantuflo.es alpha35
+212.128.4.54 alpha36.pantuflo.es alpha36
+212.128.4.55 alpha37.pantuflo.es alpha37
+212.128.4.56 alpha38.pantuflo.es alpha38
+212.128.4.57 alpha39.pantuflo.es alpha39
+212.128.4.58 alpha40.pantuflo.es alpha40
+
+# Móstoles - Laboratorio 111
+
+212.128.4.60 beta01.pantuflo.es beta01
+212.128.4.61 beta02.pantuflo.es beta02
+212.128.4.62 beta03.pantuflo.es beta03
+212.128.4.63 beta04.pantuflo.es beta04
+212.128.4.64 beta05.pantuflo.es beta05
+212.128.4.65 beta06.pantuflo.es beta06
+212.128.4.66 beta07.pantuflo.es beta07
+212.128.4.67 beta08.pantuflo.es beta08
+212.128.4.68 beta09.pantuflo.es beta09
+212.128.4.69 beta10.pantuflo.es beta10
+212.128.4.70 beta11.pantuflo.es beta11
+212.128.4.71 beta12.pantuflo.es beta12
+212.128.4.72 beta13.pantuflo.es beta13
+212.128.4.73 beta14.pantuflo.es beta14
+212.128.4.74 beta15.pantuflo.es beta15
+212.128.4.75 beta16.pantuflo.es beta16
+212.128.4.76 beta17.pantuflo.es beta17
+212.128.4.77 beta18.pantuflo.es beta18
+212.128.4.78 beta19.pantuflo.es beta19
+212.128.4.79 beta20.pantuflo.es beta20
+212.128.4.80 beta21.pantuflo.es beta21
+212.128.4.81 beta22.pantuflo.es beta22
+212.128.4.82 beta23.pantuflo.es beta23
+212.128.4.83 beta24.pantuflo.es beta24
+212.128.4.84 beta25.pantuflo.es beta25
+212.128.4.85 beta26.pantuflo.es beta26
+212.128.4.86 beta27.pantuflo.es beta27
+212.128.4.87 beta28.pantuflo.es beta28
+212.128.4.88 beta29.pantuflo.es beta29
+212.128.4.89 beta30.pantuflo.es beta30
+212.128.4.90 beta31.pantuflo.es beta31
+212.128.4.91 beta32.pantuflo.es beta32
+212.128.4.92 beta33.pantuflo.es beta33
+212.128.4.93 beta34.pantuflo.es beta34
+212.128.4.94 beta35.pantuflo.es beta35
+212.128.4.95 beta36.pantuflo.es beta36
+212.128.4.96 beta37.pantuflo.es beta37
+212.128.4.97 beta38.pantuflo.es beta38
+212.128.4.98 beta39.pantuflo.es beta39
+212.128.4.99 beta40.pantuflo.es beta40
+
+# Móstoles - Laboratorio 106
+212.128.4.100 gamma01.pantuflo.es gamma01
+212.128.4.101 gamma02.pantuflo.es gamma02
+212.128.4.102 gamma03.pantuflo.es gamma03
+212.128.4.103 gamma04.pantuflo.es gamma04
+212.128.4.104 gamma05.pantuflo.es gamma05
+212.128.4.105 gamma06.pantuflo.es gamma06
+212.128.4.106 gamma07.pantuflo.es gamma07
+212.128.4.107 gamma08.pantuflo.es gamma08
+212.128.4.108 gamma09.pantuflo.es gamma09
+212.128.4.109 gamma10.pantuflo.es gamma10
+212.128.4.110 gamma11.pantuflo.es gamma11
+212.128.4.111 gamma12.pantuflo.es gamma12
+212.128.4.112 gamma13.pantuflo.es gamma13
+212.128.4.113 gamma14.pantuflo.es gamma14
+212.128.4.114 gamma15.pantuflo.es gamma15
+212.128.4.115 gamma16.pantuflo.es gamma16
+212.128.4.116 gamma17.pantuflo.es gamma17
+212.128.4.117 gamma18.pantuflo.es gamma18
+212.128.4.118 gamma19.pantuflo.es gamma19
+212.128.4.119 gamma20.pantuflo.es gamma20
+212.128.4.131 gamma21.pantuflo.es gamma21
+212.128.4.132 gamma22.pantuflo.es gamma22
+212.128.4.133 gamma23.pantuflo.es gamma23
+212.128.4.134 gamma24.pantuflo.es gamma24
+212.128.4.135 gamma25.pantuflo.es gamma25
+212.128.4.136 gamma26.pantuflo.es gamma26
+212.128.4.137 gamma27.pantuflo.es gamma27
+212.128.4.138 gamma28.pantuflo.es gamma28
+212.128.4.139 gamma29.pantuflo.es gamma29
+212.128.4.140 gamma30.pantuflo.es gamma30
+212.128.4.141 gamma31.pantuflo.es gamma31
+212.128.4.142 gamma32.pantuflo.es gamma32
+212.128.4.143 gamma33.pantuflo.es gamma33
+212.128.4.144 gamma34.pantuflo.es gamma34
+212.128.4.145 gamma35.pantuflo.es gamma35
+212.128.4.146 gamma36.pantuflo.es gamma36
+212.128.4.147 gamma37.pantuflo.es gamma37
+212.128.4.148 gamma38.pantuflo.es gamma38
+212.128.4.149 gamma39.pantuflo.es gamma39
+212.128.4.150 gamma40.pantuflo.es gamma40
+
+# Móstoles - Laboratorio 108
+212.128.4.151 delta01.pantuflo.es delta01
+212.128.4.152 delta02.pantuflo.es delta02
+212.128.4.153 delta03.pantuflo.es delta03
+212.128.4.154 delta04.pantuflo.es delta04
+212.128.4.155 delta05.pantuflo.es delta05
+212.128.4.156 delta06.pantuflo.es delta06
+212.128.4.157 delta07.pantuflo.es delta07
+212.128.4.158 delta08.pantuflo.es delta08
+212.128.4.159 delta09.pantuflo.es delta09
+212.128.4.160 delta10.pantuflo.es delta10
+212.128.4.161 delta11.pantuflo.es delta11
+212.128.4.162 delta12.pantuflo.es delta12
+212.128.4.163 delta13.pantuflo.es delta13
+212.128.4.164 delta14.pantuflo.es delta14
+212.128.4.165 delta15.pantuflo.es delta15
+212.128.4.166 delta16.pantuflo.es delta16
+212.128.4.167 delta17.pantuflo.es delta17
+212.128.4.168 delta18.pantuflo.es delta18
+212.128.4.169 delta19.pantuflo.es delta19
+212.128.4.170 delta20.pantuflo.es delta20
+212.128.4.171 delta21.pantuflo.es delta21
+212.128.4.172 delta22.pantuflo.es delta22
+212.128.4.173 delta23.pantuflo.es delta23
+212.128.4.174 delta24.pantuflo.es delta24
+212.128.4.175 delta25.pantuflo.es delta25
+212.128.4.176 delta26.pantuflo.es delta26
+212.128.4.177 delta27.pantuflo.es delta27
+212.128.4.178 delta28.pantuflo.es delta28
+212.128.4.179 delta29.pantuflo.es delta29
+212.128.4.180 delta30.pantuflo.es delta30
+212.128.4.181 delta31.pantuflo.es delta31
+212.128.4.182 delta32.pantuflo.es delta32
+212.128.4.183 delta33.pantuflo.es delta33
+212.128.4.184 delta34.pantuflo.es delta34
+212.128.4.185 delta35.pantuflo.es delta35
+212.128.4.186 delta36.pantuflo.es delta36
+212.128.4.187 delta37.pantuflo.es delta37
+212.128.4.188 delta38.pantuflo.es delta38
+212.128.4.189 delta39.pantuflo.es delta39
+212.128.4.190 delta40.pantuflo.es delta40
+
+
+# Laboratorio 002A - Móstoles
+# Edificio Laboratorios III
+193.147.56.217   eta01.pantuflo.es     eta01
+193.147.56.218   eta02.pantuflo.es     eta02
+193.147.56.219   eta03.pantuflo.es     eta03
+193.147.56.220   eta04.pantuflo.es     eta04
+193.147.56.221   eta05.pantuflo.es     eta05
+193.147.56.222   eta06.pantuflo.es     eta06
+193.147.56.223   eta07.pantuflo.es     eta07
+193.147.56.224   eta08.pantuflo.es     eta08
+193.147.56.225   eta09.pantuflo.es     eta09
+193.147.56.226   eta10.pantuflo.es     eta10
+193.147.56.227   eta11.pantuflo.es     eta11
+193.147.56.228   eta12.pantuflo.es     eta12
+193.147.56.229   eta13.pantuflo.es     eta13
+193.147.56.230   eta14.pantuflo.es     eta14
+193.147.56.231   eta15.pantuflo.es     eta15
+193.147.56.232   eta16.pantuflo.es     eta16
+193.147.56.233   eta17.pantuflo.es     eta17
+193.147.56.234   eta18.pantuflo.es     eta18
+193.147.56.235   eta19.pantuflo.es     eta19
+193.147.56.236   eta20.pantuflo.es     eta20
+193.147.56.237   eta21.pantuflo.es     eta21
+
+# Hosts de Fuenla
+
+# Laboratorio 004 - Fuenlabrada
+# Edificio Laboratorios II
+193.147.73.56   epsilon01.cct.urjc.es   epsilon01
+193.147.73.57   epsilon02.cct.urjc.es   epsilon02
+193.147.73.58   epsilon03.cct.urjc.es   epsilon03
+193.147.73.59   epsilon04.cct.urjc.es   epsilon04
+193.147.73.60   epsilon05.cct.urjc.es   epsilon05
+193.147.73.61   epsilon06.cct.urjc.es   epsilon06
+193.147.73.62   epsilon07.cct.urjc.es   epsilon07
+193.147.73.63   epsilon08.cct.urjc.es   epsilon08
+193.147.73.64   epsilon09.cct.urjc.es   epsilon09
+193.147.73.65   epsilon10.cct.urjc.es   epsilon10
+193.147.73.66   epsilon11.cct.urjc.es   epsilon11
+193.147.73.67   epsilon12.cct.urjc.es   epsilon12
+193.147.73.68   epsilon13.cct.urjc.es   epsilon13
+193.147.73.69   epsilon14.cct.urjc.es   epsilon14
+193.147.73.70   epsilon15.cct.urjc.es   epsilon15
+193.147.73.71   epsilon16.cct.urjc.es   epsilon16
+193.147.73.72   epsilon17.cct.urjc.es   epsilon17
+193.147.73.73   epsilon18.cct.urjc.es   epsilon18
+193.147.73.74   epsilon19.cct.urjc.es   epsilon19
+193.147.73.75   epsilon20.cct.urjc.es   epsilon20
+193.147.73.76   epsilon21.cct.urjc.es   epsilon21
+193.147.73.77   epsilon22.cct.urjc.es   epsilon22
+193.147.73.78   epsilon23.cct.urjc.es   epsilon23
+193.147.73.79   epsilon24.cct.urjc.es   epsilon24
+193.147.73.80   epsilon25.cct.urjc.es   epsilon25
+193.147.73.81   epsilon26.cct.urjc.es   epsilon26
+193.147.73.82   epsilon27.cct.urjc.es   epsilon27
+193.147.73.83   epsilon28.cct.urjc.es   epsilon28
+193.147.73.84   epsilon29.cct.urjc.es   epsilon29
+193.147.73.85   epsilon30.cct.urjc.es   epsilon30
+193.147.73.86   epsilon31.cct.urjc.es   epsilon31
+193.147.73.87   epsilon32.cct.urjc.es   epsilon32
+193.147.73.88   epsilon33.cct.urjc.es   epsilon33
+193.147.73.89   epsilon34.cct.urjc.es   epsilon34
+193.147.73.90   epsilon35.cct.urjc.es   epsilon35
+193.147.73.91   epsilon36.cct.urjc.es   epsilon36
+193.147.73.92   epsilon37.cct.urjc.es   epsilon37
+193.147.73.93   epsilon38.cct.urjc.es   epsilon38
+193.147.73.94   epsilon39.cct.urjc.es   epsilon39
+193.147.73.95   epsilon40.cct.urjc.es   epsilon40
+193.147.73.96   epsilon41.cct.urjc.es   epsilon41
+
+
+# Laboratorio 005 - Fuenlabrada
+# Edificio Laboratorios II
+193.147.73.97   zeta01.cct.urjc.es      zeta01
+193.147.73.98   zeta02.cct.urjc.es      zeta02
+193.147.73.99   zeta03.cct.urjc.es      zeta03
+193.147.73.100  zeta04.cct.urjc.es      zeta04
+193.147.73.101  zeta05.cct.urjc.es      zeta05
+193.147.73.102  zeta06.cct.urjc.es      zeta06
+193.147.73.103  zeta07.cct.urjc.es      zeta07
+193.147.73.104  zeta08.cct.urjc.es      zeta08
+193.147.73.105  zeta09.cct.urjc.es      zeta09
+193.147.73.106  zeta10.cct.urjc.es      zeta10
+193.147.73.107  zeta11.cct.urjc.es      zeta11
+193.147.73.108  zeta12.cct.urjc.es      zeta12
+193.147.73.109  zeta13.cct.urjc.es      zeta13
+193.147.73.110  zeta14.cct.urjc.es      zeta14
+193.147.73.111  zeta15.cct.urjc.es      zeta15
+193.147.73.112  zeta16.cct.urjc.es      zeta16
+193.147.73.113  zeta17.cct.urjc.es      zeta17
+193.147.73.114  zeta18.cct.urjc.es      zeta18
+193.147.73.115  zeta19.cct.urjc.es      zeta19
+193.147.73.116  zeta20.cct.urjc.es      zeta20
+193.147.73.117  zeta21.cct.urjc.es      zeta21
+193.147.73.118  zeta22.cct.urjc.es      zeta22
+193.147.73.119  zeta23.cct.urjc.es      zeta23
+193.147.73.120  zeta24.cct.urjc.es      zeta24
+193.147.73.121  zeta25.cct.urjc.es      zeta25
+193.147.73.122  zeta26.cct.urjc.es      zeta26
+193.147.73.123  zeta27.cct.urjc.es      zeta27
+193.147.73.124  zeta28.cct.urjc.es      zeta28
+193.147.73.125  zeta29.cct.urjc.es      zeta29
+193.147.73.126  zeta30.cct.urjc.es      zeta30
+193.147.73.127  zeta31.cct.urjc.es      zeta31
+193.147.73.128  zeta32.cct.urjc.es      zeta32
+193.147.73.129  zeta33.cct.urjc.es      zeta33
+193.147.73.130  zeta34.cct.urjc.es      zeta34
+193.147.73.131  zeta35.cct.urjc.es      zeta35
+193.147.73.132  zeta36.cct.urjc.es      zeta36
+193.147.73.133  zeta37.cct.urjc.es      zeta37
+193.147.73.134  zeta38.cct.urjc.es      zeta38
+193.147.73.135  zeta39.cct.urjc.es      zeta39
+193.147.73.136  zeta40.cct.urjc.es      zeta40
+193.147.73.137  zeta41.cct.urjc.es      zeta41
+
+# Laboratorio Seminario 5 - Fuenlabrada
+# Edificio Laboratorios II (planta baja)
+193.147.57.71   theta01.cct.urjc.es     theta01
+193.147.57.72   theta02.cct.urjc.es     theta02
+193.147.57.73   theta03.cct.urjc.es     theta03
+193.147.57.74   theta04.cct.urjc.es     theta04
+193.147.57.75   theta05.cct.urjc.es     theta05
+193.147.57.76   theta06.cct.urjc.es     theta06
+193.147.57.77   theta07.cct.urjc.es     theta07
+193.147.57.78   theta08.cct.urjc.es     theta08
+193.147.57.79   theta09.cct.urjc.es     theta09
+193.147.57.80   theta10.cct.urjc.es     theta10
+193.147.57.81   theta11.cct.urjc.es     theta11
+193.147.57.82   theta12.cct.urjc.es     theta12
+193.147.57.83   theta13.cct.urjc.es     theta13
+193.147.57.84   theta14.cct.urjc.es     theta14
+193.147.57.85   theta15.cct.urjc.es     theta15
+193.147.57.86   theta16.cct.urjc.es     theta16
+193.147.57.87   theta17.cct.urjc.es     theta17
+193.147.57.88   theta18.cct.urjc.es     theta18
+193.147.57.89   theta19.cct.urjc.es     theta19
+193.147.57.90   theta20.cct.urjc.es     theta20
+
+# Laboratorio 7 - Fuenlabrada
+# Edificio Laboratorios II 
+212.128.244.076 iota01.pantuflo.es iota01
+212.128.244.077 iota02.pantuflo.es iota02
+212.128.244.078 iota03.pantuflo.es iota03
+212.128.244.079 iota04.pantuflo.es iota04
+212.128.244.080 iota05.pantuflo.es iota05
+212.128.244.081 iota06.pantuflo.es iota06
+212.128.244.082 iota07.pantuflo.es iota07
+212.128.244.083 iota08.pantuflo.es iota08
+212.128.244.084 iota09.pantuflo.es iota09
+212.128.244.085 iota10.pantuflo.es iota10
+212.128.244.086 iota11.pantuflo.es iota11
+212.128.244.087 iota12.pantuflo.es iota12
+212.128.244.088 iota13.pantuflo.es iota13
+212.128.244.089 iota14.pantuflo.es iota14
+212.128.244.090 iota15.pantuflo.es iota15
+212.128.244.091 iota16.pantuflo.es iota16
+212.128.244.092 iota17.pantuflo.es iota17
+212.128.244.093 iota18.pantuflo.es iota18
+212.128.244.094 iota19.pantuflo.es iota19
+212.128.244.095 iota20.pantuflo.es iota20
+212.128.244.096 iota21.pantuflo.es iota21
+212.128.244.097 iota22.pantuflo.es iota22
+212.128.244.098 iota23.pantuflo.es iota23
+212.128.244.099 iota24.pantuflo.es iota24
+212.128.244.100 iota25.pantuflo.es iota25
+212.128.244.101 iota26.pantuflo.es iota26
+212.128.244.102 iota27.pantuflo.es iota27
+212.128.244.103 iota28.pantuflo.es iota28
+212.128.244.104 iota29.pantuflo.es iota29
+212.128.244.105 iota30.pantuflo.es iota30
+212.128.244.106 iota31.pantuflo.es iota31
+212.128.244.107 iota32.pantuflo.es iota32
+212.128.244.108 iota33.pantuflo.es iota33
+212.128.244.109 iota34.pantuflo.es iota34
+212.128.244.110 iota35.pantuflo.es iota35
+212.128.244.111 iota36.pantuflo.es iota36
+212.128.244.112 iota37.pantuflo.es iota37
+212.128.244.113 iota38.pantuflo.es iota38
+212.128.244.114 iota39.pantuflo.es iota39
+212.128.244.115 iota40.pantuflo.es iota40
+212.128.244.116 iota41.pantuflo.es iota41
+212.128.244.117 iota42.pantuflo.es iota42
+212.128.244.118 iota43.pantuflo.es iota43
+212.128.244.119 iota44.pantuflo.es iota44
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts

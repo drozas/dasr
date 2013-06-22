@@ -1,0 +1,324 @@
+David Rozas Domingo	drozas
+
+18-05-2009
+
+Práctica 4.1
+
+4.1.1
+Copiamos el directorio con la máquina virtual y hacemos los 
+renombramientos necesarios:
+drozas@gamma09:/var/tmp/drozas$ cp -R /opt/pc-vacio-red/ /var/tmp/drozas/
+drozas@gamma09:/var/tmp/drozas$ mv pc-vacio-red/ pc02
+drozas@gamma09:/var/tmp/drozas$ mv pc02/pc-vacio-red.vmx pc02/pc02.vmx
+
+Instalamos nano, cambiamos el nombre en /etc/hostname y reiniciamos para 
+comprobar que los cambios sean efectivos.
+sudo apt-get install nano
+sudo nano /etc/hostname
+sudo reboot
+
+4.1.2
+
+En la máquina virtual tendremos un fichero con un script que ejecute 
+dhclient: /etc/init.d/dhclient
+
+Para que se ejecute al arrancar, comprobamos que estamos en el nivel 2 
+(runlevel), y comprobamos que existe un enlace simbólico al script 
+anterior en /etc/rc2.d
+Su nombre (S98dhclient) nos indica que la operación a realizar es 
+arrancar (S-start) y que se hará con orden 98
+
+4.1.3
+
+Al igual que en el apartado anterior, tendremos un enlace simbólico: 
+/etc/rc2.d/S99_instala_mv_2
+Pero el script al que apunta /etc/init.d/instala_mv_2 no existe (lo 
+tendremos que agregar nosotros en fases posteriores)
+
+4.1.4
+
+La máquina tiene la clave pública de root en el fichero /root/.ssh/authorized_keys , por tanto cualquiera 
+que tenga la clave privada podrá entrar.
+
+
+Práctica 4.2
+
+
+(OK)- PREGUNTA: ¿Podemos suponer que el rango de ip's estará siempre dentro 
+de: XXX.XXX.XXX.YYY y XXX.XXX.XXX.ZZZ. Sí, bastaría. Aunque podemos hacer una comprobación de que 
+son ips de clase C (optativa-TODO)
+
+
+- Para el script instala_mv_1, el conjunto de operaciones remotas a realizar (comprobamos primero 
+manualmente es):
+	- scp instala_mv_2 root@172.16.19.130:/etc/init.d/ (todavía no se hace uso de claves)
+	- ssh root@172.16.19.130 'chmod 755 /etc/init.d/instala_mv_2'
+	- ssh root@172.16.19.130 '/etc/init.d/instala_mv_2 start'
+- Como queremos automatizar el proceso, necesitamos usar un par de claves privada/pública. En este 
+caso queremos acceder sin la contraseña de root a la máquina virtual, por tanto:
+	- Tenemos que utilizar la clave privada facilitada para acceder
+	- Y comprobar que la clave pública root@pc-vacio-red está en authorized keys en la VM
+	- Comprobar permisos, nombre, grupo, etc. en ambos lados (ver transpa)
+- Por tanto ahora probaremos:
+	- scp -i ~/.ssh/id_root_pc-vacio instala_mv_2 root@172.16.19.130:/etc/init.d/ 
+	- ssh -i ~/.ssh/id_root_pc-vacio root@172.16.19.130 'chmod 755 /etc/init.d/instala_mv_2'
+	- ssh -i ~/.ssh/id_root_pc-vacio root@172.16.19.130 '/etc/init.d/instala_mv_2 start'
+- Todo OK, procedemos a codificarlo: OK.
+
+Para que la máquina virtual pueda acceder a nuestra cuenta sin pedirnos la contraseña, vamos a generar
+un par de claver privada/pública que permitan el acceso a la misma:
+
+drozas@delta39:~$ ssh-keygen -t rsa
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/al-03-04/drozas/.ssh/id_rsa): /home/al-03-04/drozas/.ssh/id_drozas_rsa
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/al-03-04/drozas/.ssh/id_drozas_rsa.
+Your public key has been saved in /home/al-03-04/drozas/.ssh/id_drozas_rsa.pub.
+The key fingerprint is:
+44:77:ae:57:fe:88:6d:08:61:d1:2f:35:92:2d:27:80 drozas@delta39
+drozas@delta39:~$ 
+
+Hacemos un cp de la clave pública a authorized_keys en la máquina host (en teoría sería un mv, pero quiero 
+conservar una copia a parte por si fuera necesario concatenar alguna más en el futuro). Además comprobamos los 
+permisos en la máquina host
+
+drozas@delta39:~$ cp .ssh/id_drozas_rsa .ssh/authorized_keys
+drozas@delta39:~$ ls -l .ssh/
+total 24
+-rw------- 1 drozas al-03-04 1675 2009-05-19 19:17 authorized_keys
+-rw------- 1 drozas al-03-04 1675 2009-05-19 19:14 id_drozas_rsa
+-rw------- 1 drozas al-03-04  396 2009-05-19 19:14 id_drozas_rsa.pub
+-rw------- 1 drozas al-03-04  672 2009-05-19 18:09 id_root_pc-vacio
+-rw------- 1 drozas al-03-04 5876 2009-05-19 17:37 known_hosts
+
+
+drozas@delta39:~$ ls -la  |grep .ssh
+-rw-------   1 drozas al-03-04    35 2009-03-21 20:01 .lesshst
+drwx------   2 drozas al-03-04  4096 2009-05-19 19:17 .ssh
+
+Ahora copiaremos manualmente la clave privada en la VM, comprobaremos los permisos y veremos si es posible 
+acceder (ej.: un ssh)
+
+drozas@gamma09:~/dasr/pc02$ scp ../../.ssh/id_drozas_rsa root@172.16.19.130:/root/.ssh/
+
+(OK)PROBLEMA: Codificación en VM (a preguntar). Para probar entonces, ejecutaremos directamente 
+el 
+script. Habría que verlo...
+
+(Resuelto)PREGUNTAR: SyntaxWarning de log. Al ser un objeto no primitivo, no hace falta declararlo como 
+local (en realidad estamos accediendo ya al puntero). Por tanto, basta con no poner global.
+
+(Resuelto)PREGUNTAR: En instala_mv_2...el nombre de la máquina hay que cambiarlo temporalmente (comando 
+hostname) o para 
+siempre (modificando el fichero /etc/hostname): Daría igual porque se va a ejecutar al arranque, 
+pero queremos que se cambie para siempre (fichero)
+
+
+20-05-2008
+
+Para codificar instala_mv_2:
+	- Hemos comprobado que tenemos acceso a mi cuenta en pantuflo sin password
+	- Vamos a montarlo primero para hacer una prueba, con el comando
+	IMPTE: sshfs NO acepta la opción -i, por tanto ha sido necesario renombrar la clave 
+privada de drozas a id_rsa en la VM (posiblemente esto se pueda cambiar en algún fichero de 
+configuración, pero por simplificar)
+	Por tanto, el comando queda: sshfs -C drozas@pantuflo.es: /home/pantuflo
+
+	-OK
+
+25-05-2008
+
+Se va a realizar de forma opcional la comprobación de que /home/pantuflo no esté previamente montado 
+(para evitar remontarlo con el consiguiente error).
+
+26-05-2008
+
+Práctica 4.4 Cron
+
+4.4.1
+Hemos editado la tabla de cron para añadir: 
+SHELL=/bin/bash
+PATH=/usr/local/bin:/usr/bin:/bin
+# m h  dom mon dow   command
+* * * * * touch /tmp/test_cron_drozas
+
+Para comprobarlo...
+
+drozas@delta32:~$ ls -l /tmp/ | grep test_cron_drozas
+-rw-r--r-- 1 drozas   al-03-04      0 2009-05-26 17:41 test_cron_drozas
+drozas@delta32:~$ ls -l /tmp/ | grep test_cron_drozas
+-rw-r--r-- 1 drozas   al-03-04      0 2009-05-26 17:41 test_cron_drozas
+drozas@delta32:~$ ls -l /tmp/ | grep test_cron_drozas
+-rw-r--r-- 1 drozas   al-03-04      0 2009-05-26 17:42 test_cron_drozas
+
+Donde podemos observar que el fichero se ha creado, y después su fecha 
+ha sido modificada. Por tanto procedemos a borrar dicha entrada de la 
+tabla cron.
+
+4.4.2
+
+Se han utilizado las librerías de python para obtener la hora.
+
+4.4.3
+
+Probamos con la tabla:
+
+SHELL=/bin/bash
+PATH=/usr/local/bin:/usr/bin:/bin
+# m h  dom mon dow   command
+* * * * * /home/al-03-04/drozas/dasr/practica04/escribe_log
+
+Y parece funcionar correctamente: 
+
+drozas@delta32:~/dasr/practica04$ cat ../log.txt 
+probando cron Tue May 26 18:04:01 2009
+probando cron Tue May 26 18:05:02 2009
+
+Por tanto vamos a programarlo para que se ejecute a las 9 de la mañana 
+de lunes a viernes:
+
+SHELL=/bin/bash
+PATH=/usr/local/bin:/usr/bin:/bin
+# m h  dom mon dow   command
+0 9 * * 1-5 /home/al-03-04/drozas/dasr/practica04/escribe_log
+
+4.4.4
+
+Por ejemplo, vamos a programarlo para que se limpie a las 8am y a las 
+8pm todos los días.
+SHELL=/bin/bash
+PATH=/usr/local/bin:/usr/bin:/bin
+# m h  dom mon dow   command
+0 8,20 * * * /home/al-03-04/drozas/dasr/practica02/controla_papelera.py
+
+
+4.5 Cron con salida por correo (pantuflo)
+
+4.5.1
+Todo parece correcto:
+
+drozas@pantuflo:~$ ls -l /tmp/ | grep test_cron_drozas
+-rw-r--r-- 1 drozas   al-03-04    0 may 26 18:16 test_cron_drozas
+drozas@pantuflo:~$ ls -l /tmp/ | grep test_cron_drozas
+-rw-r--r-- 1 drozas   al-03-04    0 may 26 18:17 test_cron_drozas
+
+Borraremos dicha entrada.
+
+4.5.3
+
+Comprobamos la fecha de pantuflo con date y programamos la siguiente 
+tabla:
+
+drozas@pantuflo:~$ date
+mar may 26 18:20:16 CEST 2009
+
+SHELL=/bin/bash
+MAILTO=david.rozas@gmail.com
+PATH=/usr/local/bin:/usr/bin:/bin
+# m h  dom mon dow   command
+22 18 * * * echo 'Este es un mensaje de cron'
+
+Efectivamente, hemos recibido un mensaje:
+Cron <drozas@pantuflo> echo 'Este es un mensaje de cron'
+
+que había sido clasificado directamente como SPAM.
+
+Borramos dicha línea
+
+4.5.4
+
+Vamos a añadir la siguiente línea, para que me avise del cumple de mi 
+madre (8 de marzo) a las 10am:
+
+
+SHELL=/bin/bash
+MAILTO=david.rozas@gmail.com
+PATH=/usr/local/bin:/usr/bin:/bin
+# m h  dom mon dow   command
+0 9 * * 1-5 /home/al-03-04/drozas/dasr/practica04/escribe_log
+0 10 8 3 * echo 'Hoy es el cumple de mama'
+
+
+4.5.5
+
+Vamos a añadir otra línea para que nos avise dos horas antes de un 
+programa emitido a las 22h todos los lunes
+
+SHELL=/bin/bash
+MAILTO=david.rozas@gmail.com
+PATH=/usr/local/bin:/usr/bin:/bin
+# m h  dom mon dow   command
+0 9 * * 1-5 /home/al-03-04/drozas/dasr/practica04/escribe_log
+0 10 8 3 * echo 'Hoy es el cumple de mama'
+0 20 * * 1 echo 'Hoy ponen MXM a las 22h'
+
+27-05-2009
+
+4.5.6
+
+Ejecutamos:  ebackup dasr/ david.rozas@gmail.com
+
+Comprobamos el correo, y efectivamente lo hemos recibido (aunque hay que 
+marcarlo como no Spam)
+
+
+4.5.7
+
+Modificamos la tabla de cron de la siguiente forma:
+
+SHELL=/bin/bash
+MAILTO=david.rozas@gmail.com
+PATH=/usr/local/bin:/usr/bin:/bin
+# m h  dom mon dow   command
+0 9 * * 1-5 /home/al-03-04/drozas/dasr/practica04/escribe_log
+0 10 8 3 * echo 'Hoy es el cumple de mama'
+0 20 * * 1 echo 'Hoy ponen MXM a las 22h'
+0 15 * * 3 ebackup /home/al-03-04/drozas/dasr/ david.rozas@gmail.com
+
+De esta forma nos enviará un backup del directorio dasr todos los 
+miércoles a las 15h.
+
+Práctica 4.3
+
+Primero vamos a copiar los ficheros hosts y sources.list (hemos 
+comprobado que sea la misma versión, y apunta a peloto) a los que apuntará.
+
+drozas@gamma09:~/dasr$ cp /etc/hosts pc02/hosts
+drozas@gamma09:~/dasr$ cp /etc/apt/sources.list pc02/sources.list
+
+Además de comprobar el enlace y el contenido, hemos hecho pings a 
+maquinas del laboratorio y aptitude update y todo parece correcto.
+Además añadimos una entrada 
+127.0.0.1 pc02 en el fichero /etc/hosts
+
+Por último, impedimos el acceso con logueo añadiendo por ejemplo un - al 
+campo password en la linea de root del fichero /etc/shadow
+
+Comprobamos que ya no se puede acceder de dicha forma, aunque si que 
+podemos utilizando la clave privada
+
+¡Ojo!: Hay que modificar el campo, no vale con poner un - al ppo de linea (si no ni 
+siquiera podemos acceder con criptografía simétrica).
+
+Tenemos que copiar pc-vacio-red otra vez...
+
+¡¡Corregido bug!!. El script copiaba la clave privada de drozas como droza_id_rsa, y tiene que ser id_rsa, 
+porque sshfs no admite el parámetro -i
+
+Finalmente se ha optado por una función que añade un "-" al campo de la clave (ahora no se 
+permite acceso por loging, pero si con clave)
+
+Por último nos queda generar un nuevo par de claves en la máquina virtual, y sustituir:
+ - authorized_keys (con clave pública pc-vacío-red) por la nueva clave pública en el guest
+ - .ssh/id_root_pc-vacio (clave privada pc-vacio-red) por la nueva clave privada en el host.
+
+(Pero finalmente volvemos a dejar las antiguas, de esta forma si hace falta copiar la VM desde 0 (por ejemplo el día 
+del examen si no estoy en el mismo puesto), no hace falta repetir este proceso)
+
+12-06-2009
+
+Práctica 4.6
+
+Todas las prácticas han sido comprobadas, y se ha ejecutado revisa_nombres_dasr para revisar todos los nombres con 
+éxito.

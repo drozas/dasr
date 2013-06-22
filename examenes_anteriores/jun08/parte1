@@ -1,0 +1,7 @@
+Ejercicio 5
+
+- El año es incorrecto (los algoritmos de clave asimétrica se crearon en 1976).
+- La fuente por la que consiguen la clave pública del otro no es segura: de hecho, podían habar 
+intercambiado las claves en el avión (o directamente haber intercambiado claves simétricas).
+- Kate debería usar la clave pública de george para encriptar: Eg(A,Rg)
+

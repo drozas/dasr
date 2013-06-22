@@ -1,0 +1,124 @@
+Nombre: David Rozas Domingo
+Login: drozas
+
+
+
+|-----------------------------------------------------------------------------------|
+|                                   Ejercicio 4                                     |
+|-----------------------------------------------------------------------------------|
+|                                                                                   |
+
+1. 
+Es una clave simétrica de sesión. Debido a que la criptografía con clave pública 
+requiere muchos más recursos, una de los esquemas más habituales consiste en 
+intercambiar una clave simétrica mediante criptografía asimétrica, y realizar el 
+resto de la sesión mediante criptografía simétrica con la clave de sesión (que 
+consume menos recursos).
+
+
+2.
+Si fuera Alice quien enviase la clave de sesión, significaría que es Bob quién
+ha comenzado el proceso.
+
+3.
+No tendría sentido debido a varias razones:
+
+- Uno de los problemas de la criptografía simétrica es precisamente el intercambio 
+seguro de las claves, por tanto no hemos resuelto este problema.
+
+- Aunque supongamos que ambos se han intercambiado claves simétricas de forma 
+segura, las claves que se intercambian en criptografía asimétrica son las públicas,
+por lo que no es necesario cifrarlas (cualquiera las puede ver).
+
+- Aun así, si nos empeñásemos, el proceso sería muy costoso puesto que estamos
+ porque estamos utilizando criptografía asimétrica para la sesión.
+
+
+|-----------------------------------------------------------------------------------|
+|                                   Ejercicio 5                                     |
+|-----------------------------------------------------------------------------------|
+|                                                                                   |
+
+
+
+5.1
+Sería una clonación, puesto que estamos haciendo una réplica del sistema
+operativo (cerebro) que pondríamos sobre un nuevo ordenador (porque por ejemplo 
+el otro tuvo un fallo de HW).
+
+5.2
+Sería una virtualización: el robot biónico es una máquina virtual sobre la que
+no se van a hacer cambios.
+
+5.3
+Sería una paravirtualización: el robot biónico es una máquina virtual, pero 
+el sistema guest requiere ciertas modificaciones.
+
+5.4
+Sería una jaula chroot, en la que aislamos cierta parte del sistema de 
+ficheros para hacer las pruebas.
+
+5.5
+Sería una capa de compatibilidad, en la que hacemos un API de compatibilidad
+del API de Walt Disney para C3PO.
+
+5.6
+Sería un simulador, puesto que está simulando algunas de las características
+externas de un sistema (el humano) pero no lo es (no es un humano).
+
+|-----------------------------------------------------------------------------------|
+|                                   Ejercicio 6                                     |
+|-----------------------------------------------------------------------------------|
+|                                                                                   |
+#Actualizar paquete: en la MV
+sudo aptitude update;
+sudo aptitude safe-upgrade;
+
+#Instalar ssh,sshfs en la MV
+sudo aptitude install ssh;
+sudo aptitude install sshfs;
+
+#Hacer que arranque dhclient automáticamente: en la MV:
+#En la máquina virtual tendremos un fichero con un script que ejecute
+#dhclient: /etc/init.d/dhclient y hacemos un enlace simbólico al mismo en el nivel 2:
+ls -l /etc/init.d/dhclient /etc/rc2.d/S98dhclient;
+
+#Para cambiar la contraseña de root, en la MV:
+sudo passwd root;
+
+#Generamos las claves, en la MV:
+su;
+ssh-keygen -t rsa;
+#Que por defecto se guardarán en /root/.ssh/id_rsa[.pub]
+
+#También en la MV, comprobamos que exista el fichero authorized keys
+ls -la /root/.ssh/;
+
+#Y vemos que no, así que copiamos la clave pública a authorized keys:
+sudo cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys;
+
+#Comprobamos que sea el dueño y el grupo root permisos 700 en .ssh y 
+#que todos los ficheros contenidos en .ssh tenga 600
+ls -la /root | grep .ssh;
+ls -la /root/.ssh;
+(No es necesario cambiarlos)
+
+#Para que el servidor los exporte, desde una terminal en la que tenemos
+#una sesión ssh en pantuflo (o cualquier maquina del labo) y en la
+#que suponemos estamos en el home
+scp root@maquina_virtual:/root/.ssh/id_rsa public_html/id_rsa_root;
+
+#Y le damos permisos de lectura
+chmod +r public_html/id_rsa_root;
+
+#Para hacer que se ejecute instala_mv_2, crearemos un enlace simbólico en la VM:
+ls -l /etc/init.d/instala_mv_2 /etc/rc2.d/S99_instala_mv_2;
+
+#Crearemos el home pantuflo en la MV:
+mkdir /home/pantuflo
+
+#Y para que conozca la clave publica de pantuflo (la url esta inventada), 
+#la descargamos de la web, y la  añadimos en el fichero known_hosts
+sudo su;
+wget http://pantuflo.gsyc.es/clave_publica >> /root/.ssh/known_hosts;
+

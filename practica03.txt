@@ -1,0 +1,409 @@
+David Rozas Domingo	drozas
+
+22-04-09
+- Práctica 3.1
+	- 3.1.1: mkdir /var/tmp/drozas
+		 mkdir /var/tmp/drozas/pc01
+		 ls -l /var/tmp/
+		 ls -l /var/tmp/drozas
+		(No fue necesario cambiar los permisos, eran correctos por defecto)
+
+	- 3.1.2: Utilizando el comando: df /var/tmp/ , podemos ver que el 
+sistema de ficheros está en el disco local: /dev/sda1 , al contrario que si por 
+ejemplo comprobamos nuestro home: df $HOME , donde podemos ver que está en el 
+servidor lechuzo: lechuzo.escet.urjc.es
+
+	- 3.1.3 cp -R /opt/pc-vacio/* /var/tmp/drozas/pc01
+		mv /var/tmp/drozas/pc01/pc-vacio.vmx /var/tmp/drozas/pc01/pc01.vmx
+		vmplayer /var/tmp/drozas/pc01/pc01.vmx
+	
+	. 3.1.4	
+		(dentro de la VM)
+		sudo dhclient
+		ping www.google.es
+
+	- 3.1.5:
+		(En la VM)
+		sudo apt-get install nano (es el editor de texto al que estoy acostumbrado, y no estaba 
+instalado)
+		nano /etc/apt/sources.list : Aquí podemos ver que la versión es Hardy
+
+		Algunas de las características de esta versión son:
+		- Lanzada el 24-04-2004
+		- Es una versión LTS 
+		- Mejoras en la detección del HW
+		- Facilitar la compartición de ficheros 
+		- Mejoras en la secuencia de arranque
+		(...)
+	3.1.6: Si miramos en los repositorios (nano /etc/apt/sources.list), podemos ver que la versión es 
+también Hardy. También lo podemos comprobar ejecutando: lsb_release -a, que nos devuelve (en ambos casos): 
+		
+		Distributor ID:	Ubuntu
+		Description:	Ubuntu 8.04.2
+		Release:	8.04
+		Codename:	hardy
+
+	3.1.7:
+		sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+		sudo nano /etc/apt/sources.list
+		Replace de repositorio estadounidense por el de la URJC
+		sudo apt-get update
+		Los fuentes no se encuentran en peloto, por tanto se van a comentar en el sources.list
+		Realizamos de nuevo sudo apt-get update, y todo parece correcto
+	3.1.8:
+		sudo aptitude safe-upgrade
+	3.1.9:
+		ifconfig (en VM): 172.16.19.129
+		ping 212.128.4.108 (en VM): ok
+		ping 172.16.19.129 host): ok
+	3.1.10:
+		aptitude search ssh
+		Podemos ver que por ejemplo el metapaquete ssh (client+server) ha sido purgado (p), así como 
+los paquetes a los que hace referencia (cliente y servidor).
+		Los instalamos con: sudo aptitude install ssh
+	3.1.11:
+		ssh alumno@172.16.19.129
+	3.1.12: 
+		sudo adduser drozas
+		sudo adduser drozas adm	
+		IMPTE: Tras probar por ssh, devuelve un error al intentar hacer una operación sudo con 
+drozas: drozas is not in the sudoers file.  This incident will be reported.
+		La solución consiste en loguearse de nuevo como alumno, y añadir drozas al grupo admin.
+		Si hacemos una operación con sudo ahora desde drozas, no hay problema. Un id de drozas nos 
+devuelve: uid=1001(drozas) gid=1001(drozas) groups=4(adm),109(admin),1001(drozas)
+		Trans consultar al profesor: adm es para instalación, por tanto podemos mantener ambos.
+		
+	3.1.13: (http://ubuntu.wordpress.com/2005/10/28/how-to-mount-a-remote-ssh-filesystem-using-sshfs/)
+		- sudo aptitude install sshfs
+		- sudo aptitude man (¡no estaba instalado ;d!)
+		- sudo adduser drozas fuse
+		- id (para verificar)
+		- sudo sshfs -C -o allow_other,nonempty drozas@pantuflo.escet.urjc.es: /home/drozas/home-pantuflo (sin sudo, fuse: failed to open /dev/fuse: Permission denied)
+
+	3.1.14: 
+		sudo userdel alumno
+		sudo hostname pc01
+		(Esto es solo efectivo hasta la siguiente vez que 
+		reiniciemos, hay que editar /etc/hostname si queremos 
+		que el cambio permanezca)
+
+- Práctica 3.2
+	3.2.1: Vamos a crear los siguientes usuarios y grupos:
+		fry, bender, leela: grupo futurama
+		homer, bart: grupo simpsons
+		Los comandos necesarios son:
+		sudo adduser fry (etc.)
+		sudo groupadd futurama (etc.)
+		sudo adduser fry futurama (etc.)
+		
+		Para comprobarlo:
+		id homer
+	
+	3.2.2: 
+		Con el comando que ejecutamos anteriormente (id), 
+		podemos ver que el grupo primario por omision es el que tiene el 
+		mismo identificador: ej.: homer para homer
+		Para cambiarlo:
+		sudo usermod -g simpsons homer (etc.)
+		¡Preguntar próximo día!---> Esto depende del comando en sí, bueno saberlo.
+		Si ahora hacemos un id, el grupo con el nombre de 
+		usuario no aparece en su lista:
+		uid=1004(bart) gid=1007(simpsons) groups=1007(simpsons)
+	3.2.3:
+		En este caso no estamos en el grupo admin, pero podemos 
+		cambiar nuestro propio grupo primario con:
+		newgrp futurama
+	
+		Para comprobarlo: id
+		uid=1002(bender) gid=1006(futurama) groups=1002(bender),1006(futurama)
+
+		¡En este caso no se ha borrado el grupo bender de su 
+		lista!, como paso en 3.2.2----> Esto depende del comando en sí, bueno saberlo ;D.
+
+29-04-09
+
+Práctica 3.3
+
+- Después de crear todos los directorios, el fichero 
+de prueba, y posicionarnos en ~dasr, ejecutamos:
+tar -czvf practica03/a.tgz test/
+- Nos posicionamos en /tmp, y ejecutamos:
+ tar -czvf ~/dasr/practica03/b.tgz ~/dasr/test/
+que ya nos indica:
+tar: Eliminando la `/' inicial de los nombres
+/home/al-03-04/drozas/dasr/test/
+/home/al-03-04/drozas/dasr/test/dir2/
+/home/al-03-04/drozas/dasr/test/dir1/
+/home/al-03-04/drozas/dasr/test/dir1/hola.txt
+
+Por lo que el segundo fichero, contendrá toda la ruta, 
+mientras que en el primero, la "raíz", será /test
+
+Lo cual podemos comprobar al descomprimir ambos:
+
+drozas@gamma09:~/dasr$ tar -xzvf practica03/a.tgz 
+test/
+test/dir2/
+test/dir1/
+test/dir1/hola.txt
+drozas@gamma09:~/dasr$ tar -xzvf practica03/b.tgz 
+home/al-03-04/drozas/dasr/test/
+home/al-03-04/drozas/dasr/test/dir2/
+home/al-03-04/drozas/dasr/test/dir1/
+home/al-03-04/drozas/dasr/test/dir1/hola.txt
+
+Práctica 3.4
+
+Parte 1
+	- Transformará ficheros .tgz a .tar.bz2 en lugar de a .bz2 (de esta forma si el fichero comprimido
+	está compuesto de varios ficheros todos son incluídos en el nuevo .tar.bz2) 
+	- Esto ha sido consultado al profesor de prácticas.
+
+	Ej. de comando que se ejecuta internamente: gunzip -c b.tgz | bzip2 > ./b.tar.bz2
+
+06-05-2009
+
+Parte 2
+	- Igualmente para esta práctica 2, transformaremos un .tar.bz2 a .tgz (de esta forma admitimos ficheros
+	empaquetados, además de comprimidos).
+	- Esto ha sido consultado al profesor de prácticas.
+
+	Ej. de comando que se ejecuta internamente: bzcat b.tar.bz2 | gzip > test.tgz
+
+
+Práctica 3.5
+
+- PREGUNTAR por forma de averiguar codificación local (de momento usamos la variable de entorno $LANG): consultado, OK.
+- Se va a realizar la parte optativa: si es un directorio, se recorrerá recursivamente y el proceso se hará para todos 
+los ficheros que se encuentren. OK
+- Para averiguar el charset del fichero se ha usado:  command = "file --mime " + file . PREGUNTAR!: consultado, OK.
+
+11-05-2009
+
+Práctica 3.6
+
+- 3.6.1-3.6.3 Se han creado, modificado y borrado ficheros en ambas direcciones con éxito.
+Ej. Fichero modificado en gamma10, mientras estamos en gamma09:
+
+Ejecutando sincronización...
+Contacting server...
+drozas@gamma10's password: 
+Connected [//gamma09//tmp/dir1 -> //gamma10//tmp/dir2]
+Looking for changes
+  Waiting for changes from server
+Reconciling changes
+
+local          gamma10            
+         <---- changed    test  [f] f
+
+Proceed with propagating updates? [] y
+Propagating updates
+
+
+UNISON 2.27.57 started propagating changes at 16:44:12 on 11 May 2009
+[BGN] Updating file test from //gamma10//tmp/dir2 to /tmp/dir1
+[END] Updating file test
+UNISON 2.27.57 finished propagating changes at 16:44:12 on 11 May 2009
+
+
+Saving synchronizer state
+Synchronization complete  (1 item transferred, 0 skipped, 0 failures)
+
+Ej.: creamos un fichero en gamma09, y los cambios son propagados a gamma10:
+Connected [//gamma09//tmp/dir1 -> //gamma10//tmp/dir2]
+Looking for changes
+  Waiting for changes from server
+Reconciling changes
+
+local          gamma10            
+new file ---->            otro_test  [f] f
+
+Proceed with propagating updates? [] y
+Propagating updates
+
+
+UNISON 2.27.57 started propagating changes at 16:52:56 on 11 May 2009
+[BGN] Copying otro_test from /tmp/dir1 to //gamma10//tmp/dir2
+[END] Copying otro_test
+UNISON 2.27.57 finished propagating changes at 16:52:56 on 11 May 2009
+
+Ej.: Modificamos los permisos en gamma09, y propagamos los cambios a gamma 10:
+
+drozas@gamma09:~/dasr/practica03$ ls -l /tmp/dir1/
+total 8
+-rw------- 1 drozas al-03-04 36 2009-05-11 16:47 otro_test
+-rw------- 1 drozas al-03-04 44 2009-05-11 16:44 test
+drozas@gamma09:~/dasr/practica03$ chmod 777 /tmp/dir1/otro_test 
+drozas@gamma09:~/dasr/practica03$ ./sincroniza.sh 
+Ejecutando sincronización...
+Contacting server...
+drozas@gamma10's password: 
+Connected [//gamma09//tmp/dir1 -> //gamma10//tmp/dir2]
+Looking for changes
+  Waiting for changes from server
+Reconciling changes
+
+local          gamma10            
+props    ---->            otro_test  [f] f
+
+Proceed with propagating updates? [] y
+Propagating updates
+
+
+UNISON 2.27.57 started propagating changes at 16:54:46 on 11 May 2009
+[BGN] Copying properties for otro_test from /tmp/dir1 to //gamma10//tmp/dir2
+[END] Copying properties for otro_test
+UNISON 2.27.57 finished propagating changes at 16:54:46 on 11 May 2009
+
+
+Saving synchronizer state
+Synchronization complete  (1 item transferred, 0 skipped, 0 failures)
+drozas@gamma09:~/dasr/practica03$ 
+
+drozas@gamma10:~/dasr$ ls -l /tmp/dir2/
+total 8
+-rwxrwxrwx 1 drozas al-03-04 36 2009-05-11 16:52 otro_test
+-rw------- 1 drozas al-03-04 44 2009-05-11 16:44 test
+drozas@gamma10:~/dasr$ 
+
+Ej.: O borramos un fichero en gamma09, y propagamos los cambios:
+drozas@gamma09:~/dasr/practica03$ rm /tmp/dir1/test 
+drozas@gamma09:~/dasr/practica03$ ./sincroniza.sh 
+Ejecutando sincronización...
+Contacting server...
+drozas@gamma10's password: 
+Connected [//gamma09//tmp/dir1 -> //gamma10//tmp/dir2]
+Looking for changes
+  Waiting for changes from server
+Reconciling changes
+
+local          gamma10            
+deleted  ---->            test  [f] f
+
+Proceed with propagating updates? [] y
+Propagating updates
+
+
+UNISON 2.27.57 started propagating changes at 16:56:10 on 11 May 2009
+[BGN] Deleting test from //gamma10//tmp/dir2
+[END] Deleting test
+UNISON 2.27.57 finished propagating changes at 16:56:10 on 11 May 2009
+
+
+Saving synchronizer state
+Synchronization complete  (1 item transferred, 0 skipped, 0 failures)
+drozas@gamma10:~/dasr$ ls -l /tmp/dir2/
+total 8
+-rwxrwxrwx 1 drozas al-03-04 36 2009-05-11 16:52 otro_test
+-rw------- 1 drozas al-03-04 44 2009-05-11 16:44 test
+drozas@gamma10:~/dasr$ ls -l /tmp/dir2/
+total 4
+-rwxrwxrwx 1 drozas al-03-04 36 2009-05-11 16:52 otro_test
+
+3.6.5: Para crear un conflicto vamos a modificar en ambas partes sin actualizar en ninguna de ellas
+Hemos decidido tomar la copia de gamma 10 (la "remota"):
+local          gamma10            
+changed  <==== changed    otro_test  [f] <
+
+Por tanto al hacer un cat del fichero en gamma09, obtenemos:
+drozas@gamma09:~/dasr/practica03$ cat /tmp/dir1/otro_test 
+Este es un fichero creado en gamma9
+
+Soy gamma 10 y hago cambios
+
+Y destruímos así los cambios que se habían hecho en la "copia antigua" al estar en gamma09
+
+
+Práctica 3.7
+
+3.7.1 La máquina local será mi portátil (cuyo hostname es fanelli-ii), y la maquina remota será gamma09.
+Vamos a hacer pruebas con ejemplos similares a los vistos en la clase de teoría:
+
+ssh drozas@212.128.4.108 "echo $HOSTNAME > /tmp/prueba_hostname_mi_laptop" 
+
+Expandirá la variable en la máquina local y lo guarda en la remota
+
+drozas@gamma09:~/dasr$ cat /tmp/prueba_hostname_mi_laptop 
+fanelli-ii
+
+Mientras que ssh drozas@212.128.4.108 'echo $HOSTNAME > /tmp/prueba_hostname_maquina_remota'
+
+Expande la variable en la máquina remota, y lo guarda en la remota:
+
+drozas@gamma09:~$ cat /tmp/prueba_hostname_maquina_remota 
+gamma09
+
+Y por último: ssh drozas@212.128.4.108 echo $HOSTNAME > /tmp/prueba_hostname_maquina_local_sin_comillas
+
+Expande la variable local, ejecuta el echo en la máquina remota, y lo guardamos en la máquina local
+
+drozas@fanelli-ii:~$ cat /tmp/prueba_hostname_maquina_local_sin_comillas
+fanelli-ii
+
+3.7.2
+
+sudo passwd root
+
+3.7.3
+
+Primero, tenemos que crear un par clave pública/privada para el usuario root de la maquina virtual:
+- su
+- ssh-keygen -t rsa 
+Que por defecto se guardarán en /root/.ssh/id_rsa[.pub] (no hemos puesto passphrase)
+
+Ahora vamos a copiar ambas en /dasr/practica03/claves (no sería necesario copiar la privada, pero es parte del ejercicio):
+mkdir dasr/practica03/claves
+scp root@172.16.19.129:/root/.ssh/id_rsa ./claves
+mv claves/id_rsa claves/id_rsa_root_pc01
+
+scp root@172.16.19.129:/root/.ssh/id_rsa.pub ./claves
+mv claves/id_rsa claves/id_rsa_root_pc01.pub
+
+Comprobamos que el fichero authorized_keys no existe, y copiamos por tanto la contraseña pública del root:
+ls .ssh
+cp dasr/practica3/claves/id_rsa_root_pc01.pub .ssh/authorized_keys
+
+Realizamos todas las comprobaciones que se explican en la transparencia:
+
+Es necesario que el directorio ~/.ssh (local y remoto):
+Tenga el dueño y el grupo del usuario : ls -la |grep .ssh
+Tenga permisos 700
+Contenga todos sus ficheros con permisos 600 : ls -la .ssh
+--> Es necesario chmod 600 known_hosts (en ambas maquinas)
+
+Es necesario que en mi home solo yo pueda escribir: ls -l |grep drozas
+
+drwx--x--x  60 drozas   al-03-04  4096 2009-05-11 18:41 drozas
+
+(Hay permisos de ejecución porque es necesario para public_html)
+
+Y podemos comprobar como ahor nos podemos loguear en la cuenta de drozas desde root sin introducir contraseña:
+
+root@pc-vacio:/home/drozas# ssh drozas@212.128.4.109
+The authenticity of host '212.128.4.109 (212.128.4.109)' can't be established.
+RSA key fingerprint is c2:07:06:b5:f7:2b:30:f9:62:9f:f0:2d:9f:fe:f7:ed.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '212.128.4.109' (RSA) to the list of known hosts.
+Last login: Mon May 11 16:39:24 2009 from ip_wless_escet_89.escet.urjc.es
+
+De momento (por motivos de seguridad) vamos a borrar authorized_keys: rm .ssh/authorized_keys
+
+Ahora, si intentamos entrar de nuevo desde root a la cuenta de drozas, nos pide de nuevo la contraseña
+
+3.7.4
+Para ello es necesario utilizar la opción -X, que redirige la salida del 
+cliente XWindow de la máquina remota a la máquina local
+Ej.: Estamos en gamma09
+ssh -X drozas@gamma10
+gedit 
+(que en la barra de título, nos informa que está en gamma10).
+
+En cambio, si no usamos dicha opción, obtenemos un error:
+
+drozas@gamma09:~$ ssh drozas@gamma10
+drozas@gamma10's password: 
+Last login: Wed May 13 16:39:40 2009 from gamma09.pantuflo.es
+drozas@gamma10:~$ gedit
+cannot open display: 
+Ejecute «gedit --help» para ver una lista completa de las opciones de 
+línea de comandos.

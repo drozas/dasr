@@ -1,0 +1,20 @@
+David Rozas	(drozas)
+
+Práctica 2.1
+- Utilización de funciones lambda.
+
+Práctica 2.6
+- Utilización de df para averiguar el sistema de ficheros al que pertence un archivo/directorio (propuesta por el profesor).
+- Ampliadas las funcionalidades de la papelera para permitir también el borrado de directorios (propuesta por mí y aceptada por el profesor).
+- Política de mostrar mensaje de advertencia si el fichero es muy grande basada en porcentajes (propuesta por el profesor en el enunciado).
+
+Práctica 3.4
+- Añadidas funcionalidades para ficheros empaquetados (en ambos scripts). Propuesta por mí y aceptada por el profesor.
+
+Práctica 3.5
+- Añadidas funcionalidades para tratamiento de directorios: si es un directorio se procesan todos los ficheros que 
+contega recursivamente y se aplica la recodificación en los casos necesarios (propuesta por el profesor en el enunciado).
+
+Práctica 4.2
+- Añadidas funcionalidades para comprobar que el home no haya sido previamente montado en el directorio /home/pantuflo 
+de la máquina virtual (propuesta por mí, y aceptada por el profesor).

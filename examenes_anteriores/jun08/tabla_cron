@@ -1,0 +1,5 @@
+# m h dom mon dow command
+0 21 * * 3 /home/al-03-04/drozas/dasr/pc01/guarda_informe amartin
+0 21 * * 1 /home/al-03-04/drozas/dasr/pc01/guarda_informe pepe
+0 21 * * 2 /home/al-03-04/drozas/dasr/pc01/guarda_informe drozas
+

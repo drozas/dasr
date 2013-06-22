@@ -1,0 +1,168 @@
+#!/usr/bin/python -tt
+# -*- coding: utf-8 -*-
+
+#DASR - Práctica 4.2
+#Autor: David Rozas (drozas)
+
+"""
+Script para configuración del script de la máquina virtual que:
+
+- Averigua la dirección de la máquina virtual (a través del fichero de 
+configuración del servidor DHCP de la misma)
+- Copia el script instala_mv_2 en la máquina virtual y configura sus permisos.
+- Copia en pc02 la clave privada que le dará acceso a nuestro home en 
+pantuflo y configura sus permisos
+- Ejecutara instala_mv_2 en pc02
+"""
+
+import os.path
+import sys
+import commands
+import os
+
+
+#El log será una variable global (no es necesario declararlo en los métodos, al no ser un objeto primitivo)
+mi_log = open (os.path.join(os.getenv('HOME'),'dasr/pc02/log.txt'), "a")
+
+def check_params():
+	if (len(sys.argv)==1):
+		return 0
+	else:
+		sys.stderr.write("Uso: ./instala_mv_1\n")
+		return -1
+
+def print_and_log(message):
+	#global mi_log
+
+	mi_log.write(message + "\n")
+	print message
+
+def get_ip_range():
+	"""
+	Obtiene el rango de ips en el trabaja la máquina virtual, a partir del
+	fichero de configuración del servidor DNS de la máquina virtual
+	"""
+	dhcp_config_file = "/etc/vmware/vmnet8/dhcpd/dhcpd.conf"
+
+	if os.path.exists(dhcp_config_file):
+		p = commands.getstatusoutput('cat ' + dhcp_config_file + ' | grep range')
+		if (p[0]==0):
+			#Recortamos por espacios, y devolvemos el primer elemento y el segundo (eliminando el punto y coma)
+			lineas = p[1].split()
+			return (lineas[1], lineas[2][0:len(lineas[2])-1])
+		else:
+			return None
+	else:
+		return None
+
+def ping(ip):
+	"""
+	Realiza un ping (3 paquetes y mudo) a la máquina indicada.
+	Devuelve el mismo estado que devuelve ping (del manual):
+		1: Si no recibe ningún paquete en absoluto.
+		2: Si hubo algún error.
+		0: Si hubo respuesta
+	"""
+	return commands.getstatusoutput('ping -c 3 -q ' + ip)[0]
+
+def get_vm_ip(ip_range):
+	"""
+	Realiza una serie de pings a todas las ips del rango recibido, y devuelve la primera 
+	ip que responde (suponemos que hay una sola VM. Si no encuentra ninguna, devuelve None.
+	"""
+	print_and_log("Comenzado ping en el rango " + ip_range[0] + "-" + ip_range[1])
+	
+	#Obtenemos número inicial y final
+	ini =  int(ip_range[0].split(".")[3])
+	fin =  int(ip_range[1].split(".")[3])
+
+	#Más el resto de la ip
+	trozos = ip_range[0].split(".")
+	subnet = ""
+	for i in range(0,3):
+		subnet = subnet + trozos[i] + "."
+
+
+	for i in range(ini,fin+1):
+		ip = subnet + str(i)
+		state = ping(ip)
+		if (state==0):
+			return ip
+
+	return None
+
+def run_remote_command(command):
+
+	p = commands.getstatusoutput(command)
+	if (p[0]!=0):
+		print_and_log("Error al ejecutar: " + command)
+		print_and_log("Se aborta la ejecución del resto de comandos")
+		sys.exit(-1)
+	
+
+def run_remote_script(vm_ip):
+	"""
+	Realiza todas las operaciones necesarias para arrancar el script en la 
+	máquina virtual
+	"""
+	remote_script = os.path.join(os.getenv('HOME'), 'dasr/pc02/instala_mv_2')
+	root_private_key = os.path.join(os.getenv('HOME'),'.ssh/id_root_pc-vacio')
+	drozas_private_key = os.path.join(os.getenv('HOME'), '.ssh/id_drozas_rsa')
+
+
+
+	
+	if ( os.path.exists(root_private_key) and os.path.exists(drozas_private_key) and os.path.exists(remote_script) ):
+
+		c = 'scp -i ' + root_private_key + ' ' + remote_script + ' root@' + vm_ip + ':/etc/init.d/'
+		run_remote_command(c)
+		print_and_log("El script se copió con éxito en la VM")
+
+		c = "ssh -i " + root_private_key + " root@" + vm_ip + " 'chmod 755 /etc/init.d/instala_mv_2'"
+		run_remote_command(c)
+		print_and_log("Los permisos del script fueron modificados con éxito en la VM")
+	
+		#Impte!: sshfs no acepta -i. Es necesario que la clave de drozas sea id_rsa!!!
+		c = 'scp -i ' + root_private_key + ' ' + drozas_private_key + ' root@' + vm_ip + ':/root/.ssh/id_rsa'
+		run_remote_command(c)
+		print_and_log("La clave privada " + drozas_private_key + " fue copiada con éxito en la VM")
+		
+		#Impte!: sshfs no acepta -i. Es necesario que la clave de drozas sea id_rsa!!!
+		c = "ssh -i " + root_private_key + " root@" + vm_ip + " 'chmod 600 /root/.ssh/id_rsa'"
+		run_remote_command(c)
+		print_and_log("Los permisos de" + drozas_private_key +" fueron modificados con éxito en la VM")
+
+		c = "ssh -i " + root_private_key + " root@" + vm_ip + " '/etc/init.d/instala_mv_2 start'"
+		run_remote_command(c)
+		print_and_log("El script se ha arrancado con éxito en la VM")
+	else:
+		print_and_log("Error: No fue posible acceder a alguno de los siguientes ficheros:")
+		print_and_log(root_private_key)
+		print_and_log(drozas_private_key)
+		print_and_log(remote_script)
+
+
+if __name__ == '__main__':
+	state = check_params()
+	print_and_log("Nueva ejecución...")
+
+	if (state == 0):
+		ip_range = get_ip_range()
+
+		if (ip_range is None):
+			print_and_log("No fue posible acceder al fichero de configuración DHCP de la VM")
+		else:
+			print_and_log("Averiguando IP de la VM (este proceso puede tomar cierto tiempo)...")
+			vm_ip = get_vm_ip(ip_range)
+			if (vm_ip is None):
+				print_and_log("No se encontró la IP de la VM.")
+			else:
+				print_and_log("IP encontrada: " + vm_ip)
+			
+				run_remote_script(vm_ip)
+				
+			
+
+	mi_log.close()
+	sys.exit(state)
+

@@ -1,0 +1,57 @@
+Nombre: David Rozas Domingo
+Login: drozas
+
+
+Instrucciones: Puedes añadir todas las líneas que necesites.
+No escribas líneas demasiado largas, el límite es el cajetín que separa los ejerci-
+cios
+
+
+
+
+
+
+
+|-----------------------------------------------------------------------------------|
+|                                   Ejercicio 3                                     |
+|-----------------------------------------------------------------------------------|
+|                                                                                   |
+
+Podríamos programar una tarea cron, que ejecutará unison (uno de los requisitos
+es que la copia sea solamente de lo necesario) para mantener la copia al
+día. Para simplificar, suponemos que el becario sabe meter contraseñas, va a 
+hacer efectivos los cambios recomendados (pulsando 'f') por unison, etc.
+
+Suponemos también que tenemos todo instalado y configurado perfectamente: 
+(ssh, unison, ...) y que el becario conoce la ip de la máquina virtual: con un
+script similar al que hicimos en las prácticas y la MV está en ejecución en pantuflo, 
+o que tiene un nombre y se resuelve automáticamente, o que es fija,... etc.
+
+Suponemos también que su home en pantuflo está es:
+/home/al-03-04/becario
+
+Entonces, el comando unison a ejecutar sería:
+unison /home/al-03-04/becario/dasr/importante ssh://root@maquina-virtual//home/root
+
+
+Por tanto, bastaría con :
+ - Loguearse en pantuflo
+	ssh becario@pantuflo.gsyc.es
+ - E indicarle que añadiera una línea a la tabla cron para que se ejecutase
+ todos los días a las doce de la noche:
+
+crotab -e 
+
+Y añadir:
+# m h  dom mon dow   command
+0 0 * * * unison /home/al-03-04/becario/dasr/importante \
+ssh://root@maquina-virtual//home/root
+
+(Dejando un retorno de carro al final)
+
+
+
+Nota:
+- Se podría realizar de una forma más automatizada (ej.: evitarnos el tecleo
+de la contraseña de root en MV con criptografía asimétrica), pero no aparece
+como uno de los requisitos, por tanto se aporta la solución más sencilla.

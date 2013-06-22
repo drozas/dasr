@@ -1,0 +1,6 @@
+Ubuntu ha eclipsado a Windows XP en términos de popularidad en las búsquedas por Internet, por lo menos según los últimos datos de 
+Google Trends.
+
+Google Trends es una herramienta de Google Labs que muestra los términos de búsqueda más populares del pasado reciente. Las gráficas 
+de Google Trends representan con cuánta frecuencia se realiza una búsqueda particular en varias regiones del mundo y en varios 
+idiomas.
